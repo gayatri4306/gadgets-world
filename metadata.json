@@ -1,0 +1,6 @@
+{
+  "name": "Gadgets World",
+  "description": "Premium E-commerce platform for high-tech smart gadgets, vehicles, electronics, and computers with visual Dark & Neon design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -23,7 +23,7 @@ import {
   Award
 } from "lucide-react";
 
-import { PageView, Product, CartItem, User as UserType, Order } from "./types";
+import { PageView, Product, CartItem, User as UserType, Order, formatPrice } from "./types";
 import { PRODUCTS, CATEGORIES } from "./data";
 
 // Import sub-components
@@ -336,7 +336,7 @@ export default function App() {
         <div className="hidden md:flex items-center space-x-3 text-neutral-400">
           <span>Secure AES-256 Gateways</span>
           <span>•</span>
-          <span className="text-[#a855f7]">Free Shipping over $150</span>
+          <span className="text-[#a855f7]">Free Shipping over {formatPrice(150)}</span>
         </div>
       </div>
 
@@ -550,8 +550,8 @@ export default function App() {
                       className="w-full h-1 bg-[#27272a] rounded-lg appearance-none cursor-pointer accent-[#06b6d4]"
                     />
                     <div className="flex justify-between items-center text-xs font-mono text-neutral-400">
-                      <span>$50</span>
-                      <span className="text-white font-bold">${maxPrice} max limit</span>
+                      <span>{formatPrice(50)}</span>
+                      <span className="text-white font-bold">{formatPrice(maxPrice)} max limit</span>
                     </div>
                   </div>
                 </div>

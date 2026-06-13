@@ -13,7 +13,7 @@ import {
   ChevronRight,
   TrendingUp
 } from "lucide-react";
-import { CartItem, Order } from "../types";
+import { CartItem, Order, formatPrice } from "../types";
 
 interface CheckoutProps {
   cart: CartItem[];
@@ -201,7 +201,7 @@ export default function Checkout({
                   <span className="text-white truncate max-w-[280px]">
                     {it.name} <span className="text-neutral-500">x{it.quantity}</span>
                   </span>
-                  <span className="text-[#06b6d4] font-bold">${(it.price * it.quantity).toFixed(2)}</span>
+                  <span className="text-[#06b6d4] font-bold">{formatPrice(it.price * it.quantity)}</span>
                 </div>
               ))}
             </div>
@@ -209,7 +209,7 @@ export default function Checkout({
             {/* Totals table snippet */}
             <div className="border-t border-[#27272a] pt-3 flex justify-between items-center text-sm font-bold">
               <span className="uppercase text-white">Grand total paid</span>
-              <span className="font-mono text-[#06b6d4] text-base">${createdOrder.totalAmount.toFixed(2)}</span>
+              <span className="font-mono text-[#06b6d4] text-base">{formatPrice(createdOrder.totalAmount)}</span>
             </div>
 
             {/* Delivery address details */}
@@ -471,7 +471,7 @@ export default function Checkout({
                 <div className="p-4 bg-[#f43f5e]/5 border border-[#f43f5e]/30 rounded-xl space-y-1">
                   <p className="text-xs font-bold text-[#f43f5e] uppercase font-mono">Cash Verification Rules</p>
                   <p className="text-[11px] text-neutral-400 leading-relaxed">
-                    A flat cash processing charge of $5 will be compiled by terminal carriers during shipping delivery. Ensure real-time cash currency is prepared.
+                    A flat cash processing charge of ₹415 will be compiled by terminal carriers during shipping delivery. Ensure real-time cash currency is prepared.
                   </p>
                 </div>
               )}
@@ -493,10 +493,10 @@ export default function Checkout({
                     <img src={c.product.image} className="w-12 h-12 object-cover rounded-lg border border-[#27272a] flex-shrink-0" referrerPolicy="no-referrer" />
                     <div className="flex-1 min-w-0">
                       <p className="text-white font-semibold truncate leading-tight">{c.product.name}</p>
-                      <p className="text-[10px] text-neutral-400 font-mono mt-0.5">${c.product.price} x {c.quantity}</p>
+                      <p className="text-[10px] text-neutral-400 font-mono mt-0.5">{formatPrice(c.product.price)} x {c.quantity}</p>
                     </div>
                     <div className="font-mono text-white text-right flex-shrink-0">
-                      ${(c.product.price * c.quantity).toFixed(2)}
+                      {formatPrice(c.product.price * c.quantity)}
                     </div>
                   </div>
                 ))}
@@ -517,33 +517,33 @@ export default function Checkout({
               <div className="space-y-3.5 text-xs">
                 <div className="flex justify-between items-center text-neutral-400">
                   <span>Loaded subtotal</span>
-                  <span className="font-mono text-neutral-100">${subtotal.toFixed(2)}</span>
+                  <span className="font-mono text-neutral-100">{formatPrice(subtotal)}</span>
                 </div>
                 {discountAmount > 0 && (
                   <div className="flex justify-between items-center text-cyan-400 font-mono">
                     <span>Coupon reduction ({appliedDiscountPercent}%)</span>
-                    <span>-${discountAmount.toFixed(2)}</span>
+                    <span>-{formatPrice(discountAmount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between items-center text-neutral-400">
                   <span>Transit carriage</span>
-                  <span className="font-mono text-neutral-200">${transitFee.toFixed(2)}</span>
+                  <span className="font-mono text-neutral-200">{formatPrice(transitFee)}</span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-400">
                   <span>Sales taxation (8%)</span>
-                  <span className="font-mono text-neutral-200">${estimatedTax.toFixed(2)}</span>
+                  <span className="font-mono text-neutral-200">{formatPrice(estimatedTax)}</span>
                 </div>
                 {paymentMethod === "cod" && (
                   <div className="flex justify-between items-center text-[#f43f5e] font-mono">
                     <span>Cash on Delivery Handling</span>
-                    <span>+$5.00</span>
+                    <span>+₹415</span>
                   </div>
                 )}
 
                 <div className="border-t border-[#27272a] pt-3.5 flex justify-between items-center text-sm font-bold text-white uppercase tracking-wider">
                   <span>GRAND TOTAL NET</span>
                   <span className="font-mono text-[#06b6d4] text-lg font-black">
-                    ${(grandTotal + (paymentMethod === "cod" ? 5 : 0)).toFixed(2)}
+                    {formatPrice(grandTotal + (paymentMethod === "cod" ? 5 : 0))}
                   </span>
                 </div>
               </div>

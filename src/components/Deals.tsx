@@ -173,7 +173,7 @@ export default function Deals({ onGoToShop, showToast }: DealsProps) {
               <span>Free cargo transit protocols</span>
             </h4>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              * Any shopping basket total exceeding a net value of <span className="text-white font-bold">$150</span> bypasses our standard prioritization cargo transit fee automatically. No codes required.
+              * Any shopping basket total exceeding a net value of <span className="text-white font-bold">₹12,450</span> bypasses our standard prioritization cargo transit fee automatically. No codes required.
             </p>
           </div>
         </div>

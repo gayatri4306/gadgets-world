@@ -86,3 +86,8 @@ export interface Order {
 }
 
 export type PageView = "home" | "shop" | "detail" | "cart" | "checkout" | "offers" | "about" | "orders";
+
+export function formatPrice(usdPrice: number): string {
+  const inrPrice = Math.round(usdPrice * 83);
+  return `₹${inrPrice.toLocaleString("en-IN")}`;
+}

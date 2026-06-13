@@ -10,7 +10,7 @@ import {
   Sparkles,
   Lock
 } from "lucide-react";
-import { CartItem, Product } from "../types";
+import { CartItem, Product, formatPrice } from "../types";
 import { SPECIAL_OFFERS } from "../data";
 
 interface CartProps {
@@ -141,7 +141,7 @@ export default function Cart({
                     >
                       {item.product.name}
                     </h3>
-                    <p className="text-xs font-mono text-neutral-400 mt-1">${item.product.price} / unit</p>
+                    <p className="text-xs font-mono text-neutral-400 mt-1">{formatPrice(item.product.price)} / unit</p>
                   </div>
                 </div>
 
@@ -182,7 +182,7 @@ export default function Cart({
                   {/* Calculated total / Delete */}
                   <div className="flex items-center space-x-4">
                     <p className="text-right font-mono font-bold text-white text-sm sm:text-base min-w-[70px]">
-                      ${(item.product.price * item.quantity).toFixed(2)}
+                      {formatPrice(item.product.price * item.quantity)}
                     </p>
                     <button
                       onClick={() => onRemoveItem(item.product.id)}
@@ -252,31 +252,31 @@ export default function Cart({
                 
                 <div className="flex justify-between items-center">
                   <span className="text-neutral-400">Subtotal calculation</span>
-                  <span className="font-mono text-neutral-200">${subtotal.toFixed(2)}</span>
+                  <span className="font-mono text-neutral-200">{formatPrice(subtotal)}</span>
                 </div>
 
                 {activeCoupon && (
                   <div className="flex justify-between items-center text-cyan-400">
                     <span>Rebate Reduction ({activeCoupon.percent}%)</span>
-                    <span className="font-mono">-${discountAmount.toFixed(2)}</span>
+                    <span className="font-mono">-{formatPrice(discountAmount)}</span>
                   </div>
                 )}
 
                 <div className="flex justify-between items-center">
                   <span className="text-neutral-400">Priority Transit Fees</span>
                   <span className="font-mono text-neutral-200">
-                    {transitFee === 0 ? <span className="text-emerald-400 font-bold uppercase">FREE</span> : `$${transitFee.toFixed(2)}`}
+                    {transitFee === 0 ? <span className="text-emerald-400 font-bold uppercase">FREE</span> : formatPrice(transitFee)}
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center">
                   <span className="text-neutral-400">Estimated Sales Tax (8%)</span>
-                  <span className="font-mono text-neutral-200">${estimatedTax.toFixed(2)}</span>
+                  <span className="font-mono text-neutral-200">{formatPrice(estimatedTax)}</span>
                 </div>
 
                 <div className="border-t border-[#27272a] pt-3 flex justify-between items-center">
                   <span className="text-sm font-bold text-white uppercase tracking-wider">Grand Total</span>
-                  <span className="font-mono text-lg font-black text-white">${finalTotal.toFixed(2)}</span>
+                  <span className="font-mono text-lg font-black text-white">{formatPrice(finalTotal)}</span>
                 </div>
 
               </div>
@@ -285,7 +285,7 @@ export default function Cart({
               {subtotal < 150 && (
                 <div className="p-2.5 bg-purple-500/10 border border-purple-500/30 rounded-xl text-center">
                   <p className="text-[9px] text-[#a855f7] font-semibold">
-                    Add ${(150 - subtotal).toFixed(2)} more for FREE Priority Shipping!
+                    Add {formatPrice(150 - subtotal)} more for FREE Priority Shipping!
                   </p>
                 </div>
               )}

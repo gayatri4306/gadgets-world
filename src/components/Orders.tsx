@@ -8,7 +8,7 @@ import {
   ShoppingBag,
   ExternalLink
 } from "lucide-react";
-import { Order, PageView } from "../types";
+import { Order, PageView, formatPrice } from "../types";
 
 interface OrdersProps {
   orders: Order[];
@@ -100,7 +100,7 @@ export default function Orders({ orders, onGoToShop, showToast }: OrdersProps) {
                   </span>
                   <p className="text-right">
                     <span className="text-neutral-500 uppercase text-[9px] block">Total paid</span>
-                    <span className="text-[#06b6d4] font-bold text-sm">${order.totalAmount.toFixed(2)}</span>
+                    <span className="text-[#06b6d4] font-bold text-sm">{formatPrice(order.totalAmount)}</span>
                   </p>
                 </div>
               </div>
@@ -113,11 +113,11 @@ export default function Orders({ orders, onGoToShop, showToast }: OrdersProps) {
                       <img src={it.image} className="w-10 h-10 object-cover rounded border border-[#27272a]" referrerPolicy="no-referrer" />
                       <div className="text-left font-sans">
                         <span className="text-white text-xs font-bold leading-tight block truncate sm:max-w-md">{it.name}</span>
-                        <span className="text-[10px] text-neutral-500 font-mono mt-0.5">Quantity: {it.quantity} • Unit Price: ${it.price}</span>
+                        <span className="text-[10px] text-neutral-500 font-mono mt-0.5">Quantity: {it.quantity} • Unit Price: {formatPrice(it.price)}</span>
                       </div>
                     </div>
                     <div className="font-mono text-white text-xs text-right whitespace-nowrap">
-                      ${(it.price * it.quantity).toFixed(2)}
+                      {formatPrice(it.price * it.quantity)}
                     </div>
                   </div>
                 ))}

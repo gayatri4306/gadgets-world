@@ -97,18 +97,18 @@ export default function AIAssistant({ products, onSelectProduct, setView, showTo
       // Simple keywords lookups
       if (queryLower.includes("fold") || queryLower.includes("titanx") || queryLower.includes("phone")) {
         const p = products.find(prod => prod.id === "elec-1");
-        fallbackText += `For cell fold technology, we have the **TitanX Quantum Fold** configured with Snapdragon Alpha Elite and 1TB storage of ultra-fast UFS 4.1 ($1399). Stock level is currently ${p?.stock || 12} units.`;
+        fallbackText += `For cell fold technology, we have the **TitanX Quantum Fold** configured with Snapdragon Alpha Elite and 1TB storage of ultra-fast UFS 4.1 (₹1,16,117). Stock level is currently ${p?.stock || 12} units.`;
       } else if (queryLower.includes("scooter") || queryLower.includes("motor") || queryLower.includes("glide")) {
         const p = products.find(prod => prod.id === "veh-1");
-        fallbackText += `Our primary electric micro-mobility unit is the **Carbon Glide X1 Scooter** ($799), utilizing a 1000W magnetic direct brushless hub motor with double-weave carbon fiber body. Stock level: ${p?.stock || 8} units.`;
+        fallbackText += `Our primary electric micro-mobility unit is the **Carbon Glide X1 Scooter** (₹66,317), utilizing a 1000W magnetic direct brushless hub motor with double-weave carbon fiber body. Stock level: ${p?.stock || 8} units.`;
       } else if (queryLower.includes("computer") || queryLower.includes("rig") || queryLower.includes("rtx") || queryLower.includes("workstation")) {
         const p = products.find(prod => prod.id === "comp-1");
-        fallbackText += `Our apex workstation is the **Aether-15 Cyber Workstation** ($1999) built with a massive 24-core i9 processor and modular Nvidia RTX 5080 Laptop GPU. Stock level: ${p?.stock || 6}.`;
+        fallbackText += `Our apex workstation is the **Aether-15 Cyber Workstation** (₹1,65,917) built with a massive 24-core i9 processor and modular Nvidia RTX 5080 Laptop GPU. Stock level: ${p?.stock || 6}.`;
       } else if (queryLower.includes("vr") || queryLower.includes("wearable") || queryLower.includes("glasses")) {
         const p = products.find(prod => prod.id === "acc-1");
-        fallbackText += `We offer the state-of-the-art **NeuralLink XR Wearable VR headset** ($599) featuring dual micro-OLED 4K screens per eye. Stock level: ${p?.stock || 4}.`;
+        fallbackText += `We offer the state-of-the-art **NeuralLink XR Wearable VR headset** (₹49,717) featuring dual micro-OLED 4K screens per eye. Stock level: ${p?.stock || 4}.`;
       } else {
-        fallbackText += "Presently, we have 5 high-tech item classifications online: TitanX Quantum Fold ($1399), SonicWave Eclipse ANC ($299), Carbon Glide Scooter ($799), Aether-15 Rig ($1999), and NeuralLink XR Glasses ($599). Please specify which one you'd like to inspect!";
+        fallbackText += "Presently, we have 5 high-tech item classifications online: TitanX Quantum Fold (₹1,16,117), SonicWave Eclipse ANC (₹24,817), Carbon Glide Scooter (₹66,317), Aether-15 Rig (₹1,65,917), and NeuralLink XR Glasses (₹49,717). Please specify which one you'd like to inspect!";
       }
 
       setMessages(prev => [...prev, {

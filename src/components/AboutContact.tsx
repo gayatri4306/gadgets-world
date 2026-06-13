@@ -123,7 +123,7 @@ export default function AboutContact({ showToast }: AboutContactProps) {
   const samplePrompts = [
     "Tell me about the TitanX cellular features",
     "Show mechanical scooter engine specs",
-    "Recommend computing gear under $2000"
+    "Recommend computing gear under ₹1,65,000"
   ];
 
   return (

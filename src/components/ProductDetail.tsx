@@ -12,7 +12,7 @@ import {
   Minus,
   MessageSquare
 } from "lucide-react";
-import { Product, Review } from "../types";
+import { Product, Review, formatPrice } from "../types";
 
 interface ProductDetailProps {
   product: Product;
@@ -221,10 +221,10 @@ export default function ProductDetail({
             {/* Price components block */}
             <div className="p-4 rounded-2xl bg-[#18181b] border border-[#27272a]">
               <div className="flex items-baseline space-x-3">
-                <span className="text-3xl font-mono font-black text-[#06b6d4]">${product.price}</span>
+                <span className="text-3xl font-mono font-black text-[#06b6d4]">{formatPrice(product.price)}</span>
                 {product.originalPrice > product.price && (
                   <>
-                    <span className="text-sm text-neutral-500 line-through">${product.originalPrice}</span>
+                    <span className="text-sm text-neutral-500 line-through">{formatPrice(product.originalPrice)}</span>
                     <span className="text-xs bg-rose-500/10 text-[#f43f5e] border border-rose-500/30 px-2 py-0.5 rounded font-bold">
                       SAVE {savingPercent}%
                     </span>
@@ -561,7 +561,7 @@ export default function ProductDetail({
                     <div className="space-y-1 text-left">
                       <p className="text-[10px] uppercase font-mono tracking-wider text-neutral-400">{rel.brand}</p>
                       <h4 className="text-white font-semibold text-xs sm:text-sm truncate hover:text-[#06b6d4]">{rel.name}</h4>
-                      <p className="text-xs font-mono font-bold text-[#06b6d4]">${rel.price}</p>
+                      <p className="text-xs font-mono font-bold text-[#06b6d4]">{formatPrice(rel.price)}</p>
                     </div>
                   </div>
                 );

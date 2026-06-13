@@ -1,6 +1,6 @@
 import React from "react";
 import { Star, Heart, ShoppingCart, Eye } from "lucide-react";
-import { Product } from "../types";
+import { Product, formatPrice } from "../types";
 
 interface ProductCardProps {
   key?: string;
@@ -96,9 +96,9 @@ export default function ProductCard({
         <div className="mt-4 pt-3 border-t border-[#27272a]/80 flex items-center justify-between">
           <div className="text-left">
             <div className="flex items-baseline space-x-1.5">
-              <span className="text-lg font-mono font-bold text-white">${product.price}</span>
+              <span className="text-lg font-mono font-bold text-white">{formatPrice(product.price)}</span>
               {discountPercent > 0 && (
-                <span className="text-xs text-neutral-500 line-through">${product.originalPrice}</span>
+                <span className="text-xs text-neutral-500 line-through">{formatPrice(product.originalPrice)}</span>
               )}
             </div>
             {/* Stock indicator */}
